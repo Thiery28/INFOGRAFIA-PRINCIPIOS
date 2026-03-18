@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe: Principios de Construcción de Software - Código Completo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f0f0f0;
+            color: #000;
+            line-height: 1.5;
+            padding: 40px 20px;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            background-color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            padding: 50px 60px;
+            border-radius: 4px;
+            position: relative;
+            page-break-after: always;
+        }
+
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 20px 0 10px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 30px 0 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 25px 0 15px;
+            color: #2c3e50;
+        }
+
+        .university {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1a3e60;
+            margin-top: 60px;
+        }
+
+        .faculty {
+            font-size: 24px;
+            margin: 10px 0 40px;
+        }
+
+        .teacher {
+            font-size: 22px;
+            margin: 40px 0 30px;
+        }
+
+        .students {
+            width: 100%;
+            margin: 50px 0;
+            font-size: 20px;
+        }
+
+        .student-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #aaa;
+        }
+
+        .date {
+            margin-top: 80px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .toc {
+            font-size: 18px;
+            margin: 40px 0;
+        }
+
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+
+        .exercise-title {
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0 20px;
+            background-color: #e9ecef;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .language-tag {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 0 10px;
+            color: #0066cc;
+        }
+
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 25px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0 30px;
+            font-size: 15px;
+            line-height: 1.4;
+            border-left: 6px solid #4caf50;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .objetivos-list {
+            margin: 25px 0;
+            padding-left: 30px;
+            font-size: 18px;
+        }
+
+        .objetivos-list li {
+            margin: 10px 0;
+        }
+
+        .conclusion-box, .suggestion-box {
+            background-color: #f8f9fa;
+            border-left: 6px solid #28a745;
+            padding: 20px;
+            margin: 25px 0;
+            font-size: 18px;
+        }
+
+        .suggestion-box {
+            border-left-color: #fd7e14;
+        }
+
+        .page-number {
+            text-align: right;
+            font-size: 16px;
+            color: #6c757d;
+            margin-top: 30px;
+            border-top: 1px solid #dee2e6;
+            padding-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .page { padding: 25px 20px; }
+            h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PORTADA -->
+    <div class="page cover">
+        <div class="university">UNIVERSIDAD CONTINENTAL</div>
+        <h1>PRINCIPIOS DE CONSTRUCCIÓN DE SOFTWARE</h1>
+        <div class="faculty">FACULTAD DE INGENIERÍA</div>
+        <div class="teacher">DOCENTE: Hugo Hespetia Huamanga</div>
+
+        <div class="students">
+            <div class="student-row"><span>Franco Luis Mansilla Huayhua</span> <span>100%</span></div>
+            <div class="student-row"><span>Aderly Isaac Quispe Chavez</span> <span>100%</span></div>
+            <div class="student-row"><span>Brad Carlos Huaman Cruz</span> <span>100%</span></div>
+            <div class="student-row"><span>Thiery Henry Vargas Polo</span> <span>100%</span></div>
+        </div>
+
+        <div class="date">2026 – 10</div>
+        <div class="page-number">Página 1</div>
+    </div>
+
+    <!-- ÍNDICE -->
+    <div class="page">
+        <h2>ÍNDICE</h2>
+        <div class="toc">
+            <div class="toc-item">1. Introducción ................................ 3</div>
+            <div class="toc-item">2. Objetivos .................................... 4</div>
+            <div class="toc-item" style="margin-left: 20px;">2.1. Objetivo General ........................ 4</div>
+            <div class="toc-item" style="margin-left: 20px;">2.2 Objetivos Específicos .................. 4</div>
+        </div>
+        <div class="page-number">Página 2</div>
+    </div>
+
+    <!-- INTRODUCCIÓN -->
+    <div class="page">
+        <h2>1. Introducción</h2>
+        <p style="font-size: 18px; text-align: justify;">
+            En el ámbito de la programación, el dominio de estructuras condicionales y operaciones básicas con variables constituye la base fundamental para el desarrollo de algoritmos más complejos. El presente informe tiene como objetivo documentar el desarrollo de seis ejercicios prácticos implementados en cinco lenguajes de programación diferentes: C++, Java, Python, C# y JavaScript/TypeScript. La elección de estos lenguajes responde a su relevancia en el panorama actual de la programación, abarcando desde lenguajes de propósito general hasta aquellos especializados en desarrollo web y de sistemas. Cada ejercicio aborda conceptos fundamentales como la toma de decisiones mediante estructuras condicionales (if-else), operaciones aritméticas, manejo de entrada/salida por consola, y procesamiento de datos numéricos. Este trabajo ha sido desarrollado de manera colaborativa por un equipo de programadores, donde cada miembro se especializó en la implementación de los ejercicios en un lenguaje específico, permitiendo así un análisis comparativo enriquecido por las particularidades sintácticas y paradigmáticas de cada tecnología.
+        </p>
+        <div class="page-number">Página 3</div>
+    </div>
+
+    <!-- OBJETIVOS -->
+    <div class="page">
+        <h2>2. Objetivos</h2>
+        <h3>2.1. Objetivo General</h3>
+        <p style="font-size: 18px;">Desarrollar e implementar seis algoritmos fundamentales de programación en cinco lenguajes distintos (C++, Java, Python, C# y JavaScript/TypeScript), demostrando el dominio de estructuras condicionales, operaciones aritméticas y manejo de entrada/salida por consola.</p>
+        
+        <h3>2.2 Objetivos Específicos</h3>
+        <ul class="objetivos-list">
+            <li>1. Implementar un programa de verificación de mayoría de edad utilizando condicionales simples.</li>
+            <li>2. Desarrollar un algoritmo de intercambio de valores entre variables siguiendo reglas específicas.</li>
+            <li>3. Crear un sistema de evaluación de notas con mensajes personalizados según el resultado.</li>
+            <li>4. Programar un identificador de números pares e impares mediante el operador módulo.</li>
+            <li>5. Diseñar un analizador completo de números enteros que evalúe múltiples características simultáneamente.</li>
+            <li>6. Implementar la operación de suma de números complejos, trabajando con partes reales e imaginarias.</li>
+            <li>7. Comparar las implementaciones entre los diferentes lenguajes para identificar similitudes y diferencias sintácticas.</li>
+            <li>8. Documentar adecuadamente cada solución siguiendo estándares de calidad y formato APA.</li>
+        </ul>
+        <div class="page-number">Página 4</div>
+    </div>
+
+    <!-- EJERCICIO 1: Mayoría de Edad -->
+    <div class="page">
+        <div class="exercise-title">Ejercicio 1: Verificación de Mayoría de Edad</div>
+        
+        <div class="language-tag">C++</div>
+        <div class="code-block">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int edad;
+    cout &lt;&lt; "Ingrese su edad: ";
+    cin &gt;&gt; edad;
+    
+    if (edad >= 18) {
+        cout &lt;&lt; "Eres mayor de edad." &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Eres menor de edad." &lt;&lt; endl;
+    }
+    
+    return 0;
+}
+        </div>
+
+        <div class="language-tag">Java</div>
+        <div class="code-block">
+import java.util.Scanner;
+
+public class MayoríaEdad {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese su edad: ");
+        int edad = sc.nextInt();
+        
+        if (edad >= 18) {
+            System.out.println("Eres mayor de edad.");
+        } else {
+            System.out.println("Eres menor de edad.");
+        }
+        sc.close();
+    }
+}
+        </div>
+
+        <div class="language-tag">Python</div>
+        <div class="code-block">
+edad = int(input("Ingrese su edad: "))
+
+if edad >= 18:
+    print("Eres mayor de edad.")
+else:
+    print("Eres menor de edad.")
+        </div>
+
+        <div class="language-tag">C#</div>
+        <div class="code-block">
+using System;
+
+class MayoríaEdad {
+    static void Main() {
+        Console.Write("Ingrese su edad: ");
+        int edad = int.Parse(Console.ReadLine());
+        
+        if (edad >= 18) {
+            Console.WriteLine("Eres mayor de edad.");
+        } else {
+            Console.WriteLine("Eres menor de edad.");
+        }
+    }
+}
+        </div>
+
+        <div class="language-tag">JavaScript/TypeScript</div>
+        <div class="code-block">
+// JavaScript (Node.js)
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('Ingrese su edad: ', edad => {
+    if (parseInt(edad) >= 18) {
+        console.log('Eres mayor de edad.');
+    } else {
+        console.log('Eres menor de edad.');
+    }
+    readline.close();
+});
+        </div>
+        <div class="page-number">Página 5</div>
+    </div>
+
+    <!-- EJERCICIO 2: Intercambio de Valores -->
+    <div class="page">
+        <div class="exercise-title">Ejercicio 2: Intercambio de Valores</div>
+        
+        <div class="language-tag">C++</div>
+        <div class="code-block">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 5, b = 10, temp;
+    cout &lt;&lt; "Antes: a=" &lt;&lt; a &lt;&lt; ", b=" &lt;&lt; b &lt;&lt; endl;
+    
+    temp = a;
+    a = b;
+    b = temp;
+    
+    cout &lt;&lt; "Después: a=" &lt;&lt; a &lt;&lt; ", b=" &lt;&lt; b &lt;&lt; endl;
+    return 0;
+}
+        </div>
+
+        <div class="language-tag">Java</div>
+        <div class="code-block">
+public class Intercambio {
+    public static void main(String[] args) {
+        int a = 5, b = 10, temp;
+        System.out.println("Antes: a=" + a + ", b=" + b);
+        
+        temp = a;
+        a = b;
+        b = temp;
+        
+        System.out.println("Después: a=" + a + ", b=" + b);
+    }
+}
+        </div>
+
+        <div class="language-tag">Python</div>
+        <div class="code-block">
+a, b = 5, 10
+print(f"Antes: a={a}, b={b}")
+
+# Intercambio sin variable temporal (Python style)
+a, b = b, a
+
+print(f"Después: a={a}, b={b}")
+        </div>
+
+        <div class="language-tag">C#</div>
+        <div class="code-block">
+using System;
+
+class Intercambio {
+    static void Main() {
+        int a = 5, b = 10, temp;
+        Console.WriteLine($"Antes: a={a}, b={b}");
+        
+        temp = a;
+        a = b;
+        b = temp;
+        
+        Console.WriteLine($"Después: a={a}, b={b}");
+    }
+}
+        </div>
+
+        <div class="language-tag">JavaScript/TypeScript</div>
+        <div class="code-block">
+let a = 5, b = 10;
+console.log(`Antes: a=${a}, b=${b}`);
+
+[a, b] = [b, a]; // Intercambio con destructuring
+
+console.log(`Después: a=${a}, b=${b}`);
+        </div>
+        <div class="page-number">Página 6</div>
+    </div>
+
+    <!-- EJERCICIO 3: Evaluación de Notas -->
+    <div class="page">
+        <div class="exercise-title">Ejercicio 3: Evaluación de Notas (Aprobado/Reprobado)</div>
+        
+        <div class="language-tag">C++</div>
+        <div class="code-block">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    double nota;
+    cout &lt;&lt; "Ingrese la nota (0-20): ";
+    cin &gt;&gt; nota;
+    
+    if (nota < 0 || nota > 20) {
+        cout &lt;&lt; "Nota inválida" &lt;&lt; endl;
+    } else if (nota >= 11) {
+        cout &lt;&lt; "Aprobado" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Reprobado" &lt;&lt; endl;
+    }
+    
+    return 0;
+}
+        </div>
+
+        <div class="language-tag">Java</div>
+        <div class="code-block">
+import java.util.Scanner;
+
+public class Notas {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese la nota (0-20): ");
+        double nota = sc.nextDouble();
+        
+        if (nota < 0 || nota > 20) {
+            System.out.println("Nota inválida");
+        } else if (nota >= 11) {
+            System.out.println("Aprobado");
+        } else {
+            System.out.println("Reprobado");
+        }
+        sc.close();
+    }
+}
+        </div>
+
+        <div class="language-tag">Python</div>
+        <div class="code-block">
+nota = float(input("Ingrese la nota (0-20): "))
+
+if nota < 0 or nota > 20:
+    print("Nota inválida")
+elif nota >= 11:
+    print("Aprobado")
+else:
+    print("Reprobado")
+        </div>
+
+        <div class="language-tag">C#</div>
+        <div class="code-block">
+using System;
+
+class Notas {
+    static void Main() {
+        Console.Write("Ingrese la nota (0-20): ");
+        double nota = double.Parse(Console.ReadLine());
+        
+        if (nota < 0 || nota > 20) {
+            Console.WriteLine("Nota inválida");
+        } else if (nota >= 11) {
+            Console.WriteLine("Aprobado");
+        } else {
+            Console.WriteLine("Reprobado");
+        }
+    }
+}
+        </div>
+
+        <div class="language-tag">JavaScript/TypeScript</div>
+        <div class="code-block">
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('Ingrese la nota (0-20): ', nota => {
+    const n = parseFloat(nota);
+    if (n < 0 || n > 20) {
+        console.log('Nota inválida');
+    } else if (n >= 11) {
+        console.log('Aprobado');
+    } else {
+        console.log('Reprobado');
+    }
+    readline.close();
+});
+        </div>
+        <div class="page-number">Página 7</div>
+    </div>
+
+    <!-- EJERCICIO 4: Números Pares e Impares -->
+    <div class="page">
+        <div class="exercise-title">Ejercicio 4: Identificador de Números Pares e Impares</div>
+        
+        <div class="language-tag">C++</div>
+        <div class="code-block">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int numero;
+    cout &lt;&lt; "Ingrese un número: ";
+    cin &gt;&gt; numero;
+    
+    if (numero % 2 == 0) {
+        cout &lt;&lt; numero &lt;&lt; " es par." &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; numero &lt;&lt; " es impar." &lt;&lt; endl;
+    }
+    
+    return 0;
+}
+        </div>
+
+        <div class="language-tag">Java</div>
+        <div class="code-block">
+import java.util.Scanner;
+
+public class ParImpar {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese un número: ");
+        int numero = sc.nextInt();
+        
+        if (numero % 2 == 0) {
+            System.out.println(numero + " es par.");
+        } else {
+            System.out.println(numero + " es impar.");
+        }
+        sc.close();
+    }
+}
+        </div>
+
+        <div class="language-tag">Python</div>
+        <div class="code-block">
+numero = int(input("Ingrese un número: "))
+
+if numero % 2 == 0:
+    print(f"{numero} es par.")
+else:
+    print(f"{numero} es impar.")
+        </div>
+
+        <div class="language-tag">C#</div>
+        <div class="code-block">
+using System;
+
+class ParImpar {
+    static void Main() {
+        Console.Write("Ingrese un número: ");
+        int numero = int.Parse(Console.ReadLine());
+        
+        if (numero % 2 == 0) {
+            Console.WriteLine($"{numero} es par.");
+        } else {
+            Console.WriteLine($"{numero} es impar.");
+        }
+    }
+}
+        </div>
+
+        <div class="language-tag">JavaScript/TypeScript</div>
+        <div class="code-block">
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('Ingrese un número: ', numero => {
+    const n = parseInt(numero);
+    if (n % 2 === 0) {
+        console.log(`${n} es par.`);
+    } else {
+        console.log(`${n} es impar.`);
+    }
+    readline.close();
+});
+        </div>
+        <div class="page-number">Página 8</div>
+    </div>
+
+    <!-- EJERCICIO 5: Análisis Detallado de Número Entero -->
+    <div class="page">
+        <div class="exercise-title">Ejercicio 5: Análisis Detallado de un Número Entero</div>
+        
+        <div class="language-tag">C++</div>
+        <div class="code-block">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int main() {
+    int num;
+    cout &lt;&lt; "Ingrese un número entero: ";
+    cin &gt;&gt; num;
+    
+    cout &lt;&lt; "Análisis del número " &lt;&lt; num &lt;&lt; ":" &lt;&lt; endl;
+    cout &lt;&lt; "Positivo: " &lt;&lt; (num > 0 ? "Sí" : "No") &lt;&lt; endl;
+    cout &lt;&lt; "Negativo: " &lt;&lt; (num < 0 ? "Sí" : "No") &lt;&lt; endl;
+    cout &lt;&lt; "Cero: " &lt;&lt; (num == 0 ? "Sí" : "No") &lt;&lt; endl;
+    cout &lt;&lt; "Par: " &lt;&lt; (num % 2 == 0 ? "Sí" : "No") &lt;&lt; endl;
+    cout &lt;&lt; "Múltiplo de 5: " &lt;&lt; (num % 5 == 0 ? "Sí" : "No") &lt;&lt; endl;
+    cout &lt;&lt; "Múltiplo de 10: " &lt;&lt; (num % 10 == 0 ? "Sí" : "No") &lt;&lt; endl;
+    
+    return 0;
+}
+        </div>
+
+        <div class="language-tag">Java</div>
+        <div class="code-block">
+import java.util.Scanner;
+
+public class AnalisisNumero {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese un número entero: ");
+        int num = sc.nextInt();
+        
+        System.out.println("Análisis del número " + num + ":");
+        System.out.println("Positivo: " + (num > 0 ? "Sí" : "No"));
+        System.out.println("Negativo: " + (num < 0 ? "Sí" : "No"));
+        System.out.println("Cero: " + (num == 0 ? "Sí" : "No"));
+        System.out.println("Par: " + (num % 2 == 0 ? "Sí" : "No"));
+        System.out.println("Múltiplo de 5: " + (num % 5 == 0 ? "Sí" : "No"));
+        System.out.println("Múltiplo de 10: " + (num % 10 == 0 ? "Sí" : "No"));
+        sc.close();
+    }
+}
+        </div>
+
+        <div class="language-tag">Python</div>
+        <div class="code-block">
+num = int(input("Ingrese un número entero: "))
+
+print(f"Análisis del número {num}:")
+print(f"Positivo: {'Sí' if num > 0 else 'No'}")
+print(f"Negativo: {'Sí' if num < 0 else 'No'}")
+print(f"Cero: {'Sí' if num == 0 else 'No'}")
+print(f"Par: {'Sí' if num % 2 == 0 else 'No'}")
+print(f"Múltiplo de 5: {'Sí' if num % 5 == 0 else 'No'}")
+print(f"Múltiplo de 10: {'Sí' if num % 10 == 0 else 'No'}")
+        </div>
+
+        <div class="language-tag">C#</div>
+        <div class="code-block">
+using System;
+
+class AnalisisNumero {
+    static void Main() {
+        Console.Write("Ingrese un número entero: ");
+        int num = int.Parse(Console.ReadLine());
+        
+        Console.WriteLine($"Análisis del número {num}:");
+        Console.WriteLine($"Positivo: {(num > 0 ? "Sí" : "No")}");
+        Console.WriteLine($"Negativo: {(num < 0 ? "Sí" : "No")}");
+        Console.WriteLine($"Cero: {(num == 0 ? "Sí" : "No")}");
+        Console.WriteLine($"Par: {(num % 2 == 0 ? "Sí" : "No")}");
+        Console.WriteLine($"Múltiplo de 5: {(num % 5 == 0 ? "Sí" : "No")}");
+        Console.WriteLine($"Múltiplo de 10: {(num % 10 == 0 ? "Sí" : "No")}");
+    }
+}
+        </div>
+
+        <div class="language-tag">JavaScript/TypeScript</div>
+        <div class="code-block">
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('Ingrese un número entero: ', numStr => {
+    const num = parseInt(numStr);
+    console.log(`Análisis del número ${num}:`);
+    console.log(`Positivo: ${num > 0 ? 'Sí' : 'No'}`);
+    console.log(`Negativo: ${num < 0 ? 'Sí' : 'No'}`);
+    console.log(`Cero: ${num === 0 ? 'Sí' : 'No'}`);
+    console.log(`Par: ${num % 2 === 0 ? 'Sí' : 'No'}`);
+    console.log(`Múltiplo de 5: ${num % 5 === 0 ? 'Sí' : 'No'}`);
+    console.log(`Múltiplo de 10: ${num % 10 === 0 ? 'Sí' : 'No'}`);
+    readline.close();
+});
+        </div>
+        <div class="page-number">Página 9</div>
+    </div>
+
+    <!-- EJERCICIO 6: Suma de Números Complejos -->
+    <div class="page">
+        <div class="exercise-title">Ejercicio 6: Suma de Números Complejos</div>
+        
+        <div class="language-tag">C++</div>
+        <div class="code-block">
+#include &lt;iostream&gt;
+using namespace std;
+
+struct Complejo {
+    double real;
+    double imag;
+};
+
+Complejo sumar(Complejo a, Complejo b) {
+    Complejo resultado;
+    resultado.real = a.real + b.real;
+    resultado.imag = a.imag + b.imag;
+    return resultado;
+}
+
+int main() {
+    Complejo c1, c2, suma;
+    
+    cout &lt;&lt; "Primer número complejo:" &lt;&lt; endl;
+    cout &lt;&lt; "Parte real: "; cin &gt;&gt; c1.real;
+    cout &lt;&lt; "Parte imaginaria: "; cin &gt;&gt; c1.imag;
+    
+    cout &lt;&lt; "Segundo número complejo:" &lt;&lt; endl;
+    cout &lt;&lt; "Parte real: "; cin &gt;&gt; c2.real;
+    cout &lt;&lt; "Parte imaginaria: "; cin &gt;&gt; c2.imag;
+    
+    suma = sumar(c1, c2);
+    
+    cout &lt;&lt; "La suma es: " &lt;&lt; suma.real &lt;&lt; " + " &lt;&lt; suma.imag &lt;&lt; "i" &lt;&lt; endl;
+    
+    return 0;
+}
+        </div>
+
+        <div class="language-tag">Java</div>
+        <div class="code-block">
+import java.util.Scanner;
+
+class Complejo {
+    double real;
+    double imag;
+    
+    Complejo(double real, double imag) {
+        this.real = real;
+        this.imag = imag;
+    }
+    
+    static Complejo sumar(Complejo a, Complejo b) {
+        return new Complejo(a.real + b.real, a.imag + b.imag);
+    }
+}
+
+public class SumaComplejos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Primer número complejo:");
+        System.out.print("Parte real: ");
+        double r1 = sc.nextDouble();
+        System.out.print("Parte imaginaria: ");
+        double i1 = sc.nextDouble();
+        
+        System.out.println("Segundo número complejo:");
+        System.out.print("Parte real: ");
+        double r2 = sc.nextDouble();
+        System.out.print("Parte imaginaria: ");
+        double i2 = sc.nextDouble();
+        
+        Complejo c1 = new Complejo(r1, i1);
+        Complejo c2 = new Complejo(r2, i2);
+        Complejo suma = Complejo.sumar(c1, c2);
+        
+        System.out.println("La suma es: " + suma.real + " + " + suma.imag + "i");
+        sc.close();
+    }
+}
+        </div>
+
+        <div class="language-tag">Python</div>
+        <div class="code-block">
+class Complejo:
+    def __init__(self, real, imag):
+        self.real = real
+        self.imag = imag
+    
+    def __add__(self, otro):
+        return Complejo(self.real + otro.real, self.imag + otro.imag)
+    
+    def __str__(self):
+        return f"{self.real} + {self.imag}i"
+
+print("Primer número complejo:")
+r1 = float(input("Parte real: "))
+i1 = float(input("Parte imaginaria: "))
+c1 = Complejo(r1, i1)
+
+print("Segundo número complejo:")
+r2 = float(input("Parte real: "))
+i2 = float(input("Parte imaginaria: "))
+c2 = Complejo(r2, i2)
+
+suma = c1 + c2
+print(f"La suma es: {suma}")
+        </div>
+
+        <div class="language-tag">C#</div>
+        <div class="code-block">
+using System;
+
+struct Complejo {
+    public double Real;
+    public double Imaginario;
+    
+    public Complejo(double real, double imaginario) {
+        Real = real;
+        Imaginario = imaginario;
+    }
+    
+    public static Complejo operator +(Complejo a, Complejo b) {
+        return new Complejo(a.Real + b.Real, a.Imaginario + b.Imaginario);
+    }
+    
+    public override string ToString() {
+        return $"{Real} + {Imaginario}i";
+    }
+}
+
+class SumaComplejos {
+    static void Main() {
+        Console.WriteLine("Primer número complejo:");
+        Console.Write("Parte real: ");
+        double r1 = double.Parse(Console.ReadLine());
+        Console.Write("Parte imaginaria: ");
+        double i1 = double.Parse(Console.ReadLine());
+        
+        Console.WriteLine("Segundo número complejo:");
+        Console.Write("Parte real: ");
+        double r2 = double.Parse(Console.ReadLine());
+        Console.Write("Parte imaginaria: ");
+        double i2 = double.Parse(Console.ReadLine());
+        
+        Complejo c1 = new Complejo(r1, i1);
+        Complejo c2 = new Complejo(r2, i2);
+        Complejo suma = c1 + c2;
+        
+        Console.WriteLine($"La suma es: {suma}");
+    }
+}
+        </div>
+
+        <div class="language-tag">JavaScript/TypeScript</div>
+        <div class="code-block">
+class Complejo {
+    constructor(real, imag) {
+        this.real = real;
+        this.imag = imag;
+    }
+    
+    sumar(otro) {
+        return new Complejo(this.real + otro.real, this.imag + otro.imag);
+    }
+    
+    toString() {
+        return `${this.real} + ${this.imag}i`;
+    }
+}
+
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+console.log("Primer número complejo:");
+readline.question('Parte real: ', r1 => {
+    readline.question('Parte imaginaria: ', i1 => {
+        console.log("Segundo número complejo:");
+        readline.question('Parte real: ', r2 => {
+            readline.question('Parte imaginaria: ', i2 => {
+                const c1 = new Complejo(parseFloat(r1), parseFloat(i1));
+                const c2 = new Complejo(parseFloat(r2), parseFloat(i2));
+                const suma = c1.sumar(c2);
+                console.log(`La suma es: ${suma.toString()}`);
+                readline.close();
+            });
+        });
+    });
+});
+        </div>
+        <div class="page-number">Página 10</div>
+    </div>
+
+    <!-- CONCLUSIONES -->
+    <div class="page">
+        <h2>3. Conclusiones</h2>
+        <div class="conclusion-box">
+            <p><strong>1.</strong> C++ demostró ser un lenguaje robusto y de alto rendimiento, ideal para aplicaciones que requieren control fino sobre la memoria y el procesamiento. Su sintaxis, aunque compleja, permite expresar operaciones de manera muy explícita y eficiente. La implementación orientada a objetos para números complejos mostró la madurez de sus capacidades de abstracción.</p>
+            <p><strong>2.</strong> La implementación de los mismos algoritmos en diferentes lenguajes evidencia que, aunque la sintaxis varía significativamente, la lógica fundamental de la programación estructurada permanece constante.</p>
+            <p><strong>3.</strong> Los lenguajes de tipado estático (C++, Java, C#) ofrecen mayor seguridad en tiempo de compilación, mientras que los de tipado dinámico (Python, JavaScript) proporcionan mayor flexibilidad y rapidez en el desarrollo.</p>
+            <p><strong>4.</strong> La comprensión de estructuras condicionales y operaciones básicas es fundamental independientemente del lenguaje de programación elegido.</p>
+        </div>
+        <div class="page-number">Página 11</div>
+    </div>
+
+    <!-- SUGERENCIAS -->
+    <div class="page">
+        <h2>4. Sugerencias</h2>
+        <div class="suggestion-box">
+            <p><strong>1. Independencia de la Lógica frente a la Sintaxis:</strong> Se recomienda diseñar siempre los algoritmos en pseudocódigo o diagramas de flujo antes de codificar. Como se demostró en el informe, la
